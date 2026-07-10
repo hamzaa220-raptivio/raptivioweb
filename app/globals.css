@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+  --background: #F8F9FC;
+  --foreground: #0f172a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+.font-manrope {
+  font-family: Manrope, Inter, Arial, Helvetica, sans-serif;
+}
+
+.font-sans {
+  font-family: Inter, Arial, Helvetica, sans-serif;
+}
+
+/* ------------------------------
+   Marquee Animation
+--------------------------------*/
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+.animate-marquee {
+  animation: marquee var(--duration) linear infinite;
+  will-change: transform;
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--duration) linear infinite;
+  will-change: transform;
+}
