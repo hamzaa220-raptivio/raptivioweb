@@ -57,3 +57,13 @@ body {
   animation: marquee-vertical var(--duration) linear infinite;
   will-change: transform;
 }
+/* Hide scrollbar */
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
