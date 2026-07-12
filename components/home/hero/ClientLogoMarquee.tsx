@@ -21,7 +21,7 @@ const logos = [
 
 export default function ClientLogoMarquee() {
   return (
-    <section className="relative mt-16 overflow-hidden">
+    <section className="relative mt-6 overflow-hidden">
 
       {/* Heading */}
 
@@ -53,7 +53,7 @@ export default function ClientLogoMarquee() {
         {logos.map((logo) => (
           <div
             key={logo.name}
-            className="flex w-[260px] items-center justify-center px-4"
+            className="flex w-[320px] items-center justify-center px-5"
           >
             <Image
               src={logo.image}
@@ -61,7 +61,7 @@ export default function ClientLogoMarquee() {
               width={400}
               height={400}
               className="
-                h-28
+                h-36
                 w-auto
                 object-contain
                 grayscale

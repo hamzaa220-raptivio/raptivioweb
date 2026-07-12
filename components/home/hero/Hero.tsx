@@ -4,6 +4,7 @@ import HeroBackground from "./HeroBackground";
 import HeroHeading from "./HeroHeading";
 import HeroChat from "./HeroChat";
 import ClientLogoMarquee from "./ClientLogoMarquee";
+import HeroGalaxyCTA from "./HeroGalaxyCTA";
 
 export default function Hero() {
   return (
@@ -22,8 +23,9 @@ export default function Hero() {
 
         {/* Trusted By */}
         <ClientLogoMarquee />
-
       </div>
+
+      <HeroGalaxyCTA />
 
     </section>
   );

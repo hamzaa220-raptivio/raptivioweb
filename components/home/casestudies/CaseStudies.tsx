@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { ArrowRight } from "lucide-react";
 
 import SectionHeading from "./SectionHeading";
 import IndustryFilter from "./IndustryFilter";
@@ -95,6 +96,29 @@ export default function CaseStudies() {
           />
 
         )}
+
+        <div className="relative mt-16 overflow-hidden rounded-3xl bg-[#071A63] px-7 py-9 text-center text-white shadow-[0_20px_60px_rgba(7,26,99,0.16)] sm:px-10 md:py-11">
+          <div className="pointer-events-none absolute -right-16 -top-24 h-64 w-64 rounded-full bg-[#2A7BFF]/30 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-[#FFCA00]/15 blur-3xl" />
+
+          <div className="relative mx-auto max-w-2xl">
+            <p className="text-xl font-semibold tracking-[-0.03em] sm:text-2xl">
+              Request a case study from your industry.
+            </p>
+            <p className="mt-3 text-sm leading-6 text-white/70 sm:text-base">
+              Tell us what you’re building, and we’ll share the most relevant
+              experience from our work.
+            </p>
+
+            <a
+              href="#contact"
+              className="mt-7 inline-flex items-center gap-2 rounded-full bg-[#FFCA00] px-6 py-3.5 text-sm font-bold text-[#071A63] transition hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(255,202,0,0.28)]"
+            >
+              Contact us
+              <ArrowRight size={17} />
+            </a>
+          </div>
+        </div>
 
       </div>
 
