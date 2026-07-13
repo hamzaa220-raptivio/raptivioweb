@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { ArrowRight, BarChart3, Building2, CheckCircle2, ChevronDown, Globe2, Layers3, LineChart, Users, X } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import CTA from "@/components/home/cta/CTA";
@@ -14,9 +15,12 @@ const accents = {
   purple: { badge: "bg-violet-600 text-white", border: "hover:border-violet-400/40", glow: "bg-violet-500/15" },
 };
 
-export default function CaseStudiesPage() {
-  const [industry, setIndustry] = useState<Industry>("All");
-  const [activeId, setActiveId] = useState(caseStudies[0]?.id ?? "");
+function CaseStudiesContent() {
+  const params = useSearchParams();
+  const initialCase = caseStudies.find((item) => item.id === params.get("case"));
+
+  const [industry, setIndustry] = useState<Industry>(initialCase?.industry ?? "All");
+  const [activeId, setActiveId] = useState(initialCase?.id ?? caseStudies[0]?.id ?? "");
   const filteredCases = useMemo(() => caseStudies.filter((item) => industry === "All" || item.industry === industry), [industry]);
   const selected = filteredCases.find((item) => item.id === activeId) ?? filteredCases[0];
 
@@ -25,7 +29,7 @@ export default function CaseStudiesPage() {
       <div className="absolute left-1/2 top-20 h-[560px] w-[560px] -translate-x-1/2 rounded-full bg-blue-200/25 blur-[130px]" />
       <div className="absolute -left-24 top-72 h-80 w-80 rounded-full bg-[#FFCA00]/15 blur-[110px]" />
       <div className="absolute -right-24 top-64 h-80 w-80 rounded-full bg-[#071A63]/10 blur-[110px]" />
-      <div className="relative mx-auto max-w-7xl"><div className="mx-auto max-w-5xl text-center"><div className="mx-auto inline-flex rounded-full border border-slate-200 bg-white/80 px-5 py-2 shadow-sm backdrop-blur-xl"><span className="text-xs font-bold uppercase tracking-[0.32em] text-[#071A63]">Raptivio Case Studies</span></div><h1 className="mt-8 font-manrope text-5xl font-bold leading-[1.02] tracking-[-0.05em] text-[#071A63] md:text-7xl">Real growth systems across multiple industries.</h1><p className="mx-auto mt-7 max-w-3xl text-lg leading-8 text-slate-600 md:text-xl md:leading-9">Explore how Raptivio helps ambitious businesses generate leads, improve conversion, build better digital products and connect marketing with operations.</p><div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"><a href="/contact" className="inline-flex items-center gap-3 rounded-full bg-[#071A63] px-8 py-4 text-base font-semibold text-white shadow-xl transition hover:-translate-y-1 hover:bg-[#102d8f]">Start Your Case Study <ArrowRight size={20} /></a><a href="#case-library" className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-8 py-4 text-base font-semibold text-[#071A63] shadow-sm transition hover:-translate-y-1 hover:border-[#FFCA00]">Browse Work <ChevronDown size={20} /></a></div></div>
+      <div className="relative mx-auto max-w-7xl"><div className="mx-auto max-w-5xl text-center"><div className="mx-auto inline-flex rounded-full border border-slate-200 bg-white/80 px-5 py-2 shadow-sm backdrop-blur-xl"><span className="text-xs font-bold uppercase tracking-[0.32em] text-[#071A63]">Raptivio Case Studies</span></div><h1 className="mt-8 font-manrope text-5xl font-bold leading-[1.02] tracking-[-0.05em] text-[#071A63] md:text-7xl">Real growth systems across multiple industries.</h1><p className="mx-auto mt-7 max-w-3xl text-lg leading-8 text-slate-600 md:text-xl md:leading-9">Explore how Raptivio helps ambitious businesses generate leads, improve conversion, build better digital products and connect marketing with operations.</p><div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"><a href="/contact" className="inline-flex items-center gap-3 rounded-full bg-[#071A63] px-8 py-4 text-base font-semibold text-white shadow-xl transition hover:-translate-y-1 hover:bg-[#102d8f]">Get Started Today <ArrowRight size={20} /></a><a href="#case-library" className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-8 py-4 text-base font-semibold text-[#071A63] shadow-sm transition hover:-translate-y-1 hover:border-[#FFCA00]">Browse Work <ChevronDown size={20} /></a></div></div>
       <div className="mt-16 grid gap-4 md:grid-cols-4">{[["Qualified Leads", "3,500+", Users], ["Best CVR", "14.65%", LineChart], ["Industries", "9+", Building2], ["Growth Services", "Ads + AI + Web", Layers3]].map(([label, value, Icon]) => { const MetricIcon = Icon as typeof Users; return <div key={label as string} className="rounded-[26px] border border-slate-200 bg-white/85 p-6 text-center shadow-sm backdrop-blur-xl"><div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-[#071A63] text-white"><MetricIcon size={22} /></div><p className="mt-4 text-2xl font-bold text-[#071A63]">{value as string}</p><p className="mt-1 text-sm font-medium text-slate-500">{label as string}</p></div>; })}</div></div>
     </section>
     <section id="case-library" className="px-6 py-12 md:py-20"><div className="mx-auto max-w-7xl"><div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end"><div><p className="text-sm font-bold uppercase tracking-[0.32em] text-[#FFCA00]">Case Library</p><h2 className="mt-4 font-manrope text-4xl font-bold tracking-[-0.04em] text-[#071A63] md:text-6xl">Pick a case study by industry.</h2></div><FilterGroup value={industry} onChange={setIndustry} /></div>
@@ -45,3 +49,11 @@ function CaseDetail({ item }: { item: (typeof caseStudies)[number] }) {
 
 function DetailList({ title, points, icon: Icon }: { title: string; points: string[]; icon: typeof CheckCircle2 }) { return <div><h3 className="text-2xl font-bold text-[#071A63]">{title}</h3><div className="mt-5 space-y-3">{points.map((point) => <div key={point} className="flex gap-3 rounded-2xl bg-slate-50 p-4"><Icon size={20} className="mt-0.5 flex-shrink-0 text-[#071A63]" /><p className="text-sm leading-6 text-slate-700">{point}</p></div>)}</div></div>; }
 function TagGroup({ title, tags, blue = false }: { title: string; tags: string[]; blue?: boolean }) { return <div className="rounded-[24px] border border-slate-100 bg-white p-5"><p className="text-sm font-bold uppercase tracking-[0.24em] text-slate-400">{title}</p><div className="mt-4 flex flex-wrap gap-2">{tags.map((tag) => <span key={tag} className={`rounded-full px-4 py-2 text-sm font-semibold text-[#071A63] ${blue ? "bg-[#071A63]/10" : "bg-[#FFCA00]/15"}`}>{tag}</span>)}</div></div>; }
+
+export default function CaseStudiesPage() {
+  return (
+    <Suspense fallback={null}>
+      <CaseStudiesContent />
+    </Suspense>
+  );
+}

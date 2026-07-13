@@ -24,8 +24,7 @@ export default function SectionHeading() {
       </div>
 
       <a
-        href="https://www.raptivio.com/blog"
-        target="_blank"
+        href="/intelligence"
         className="hidden items-center gap-3 rounded-full border border-slate-200 bg-white px-6 py-3 font-semibold text-[#071A63] shadow-sm transition hover:shadow-lg lg:flex"
       >
         View all articles

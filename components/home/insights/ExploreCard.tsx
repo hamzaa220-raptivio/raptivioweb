@@ -21,8 +21,7 @@ export default function ExploreCard() {
       className="group w-[430px] shrink-0"
     >
       <Link
-        href="https://www.raptivio.com/blog"
-        target="_blank"
+        href="/intelligence"
         className="block h-full"
       >
         <div className="flex aspect-square flex-col justify-between rounded-[32px] bg-[#071A63] p-10 text-white">

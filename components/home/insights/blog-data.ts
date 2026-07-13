@@ -24,7 +24,7 @@ export const blogPosts: BlogPost[] = [
 
     title: "The Shift Toward Human-to-Human (H2H) Content",
 
-    slug: "https://www.raptivio.com/the-shift-toward-human-to-human-h2h-content/",
+    slug: "/intelligence?case=h2h",
 
     category: "Marketing",
 
@@ -40,7 +40,7 @@ export const blogPosts: BlogPost[] = [
 
     title: "SEO in 2026: Why Real Experience Matters More Than Keywords",
 
-    slug: "https://www.raptivio.com/seo-in-2026-why-real-experience-matters-more-than-keywords/",
+    slug: "/intelligence?case=seo",
 
     category: "SEO",
 
@@ -56,7 +56,7 @@ export const blogPosts: BlogPost[] = [
 
     title: "Web Development Trends for 2026: Faster, Simpler and More Personal",
 
-    slug: "https://www.raptivio.com/web-development-trends-for-2026-faster-simpler-and-more-personal/",
+    slug: "/intelligence?case=web",
 
     category: "Web Development",
 

@@ -109,8 +109,7 @@ export const caseStudies: CaseStudy[] = [
 
     featured: true,
 
-    pdf:
-      "https://www.raptivio.com/wp-content/uploads/2025/11/FlexPoint-Mortgage-US-Case-Study.pdf",
+    pdf: "/case-studies/pdfs/flexpoint-mortgage-case-study.pdf",
   },
 
   {
@@ -135,8 +134,7 @@ export const caseStudies: CaseStudy[] = [
 
     featured: false,
 
-    pdf:
-      "https://www.raptivio.com/wp-content/uploads/2025/11/Z-House-Coworking-Karachi-Case-Study.pdf",
+    pdf: "/case-studies/pdfs/z-house-coworking-case-study.pdf",
   },
 
   {
@@ -160,8 +158,7 @@ export const caseStudies: CaseStudy[] = [
 
     featured: false,
 
-    pdf:
-      "https://www.raptivio.com/wp-content/uploads/2025/11/Upzone-Consulting-Dubai-Case-Study.pdf",
+    pdf: "/case-studies/pdfs/upzone-consulting-case-study.pdf",
   },
 
   {
@@ -185,8 +182,7 @@ export const caseStudies: CaseStudy[] = [
 
     featured: false,
 
-    pdf:
-      "https://www.raptivio.com/wp-content/uploads/2025/11/Fatima-Dental-Hospital-Karachi-Case-Study.pdf",
+    pdf: "/case-studies/pdfs/fatima-dental-hospital-case-study.pdf",
   },
 
   {
@@ -210,8 +206,7 @@ export const caseStudies: CaseStudy[] = [
 
     featured: false,
 
-    pdf:
-      "https://www.raptivio.com/wp-content/uploads/2025/11/Kama-Capital-Seminar-Al-Ain-Case-Study.pdf",
+    pdf: "/case-studies/pdfs/kama-capital-al-ain-case-study.pdf",
   },
 
   {
@@ -235,8 +230,7 @@ export const caseStudies: CaseStudy[] = [
 
     featured: false,
 
-    pdf:
-      "https://www.raptivio.com/wp-content/uploads/2025/11/Kama-Capital-Seminar-2-Riyadh-Case-Study.pdf",
+    pdf: "/case-studies/pdfs/kama-capital-riyadh-case-study.pdf",
   },
 
   {

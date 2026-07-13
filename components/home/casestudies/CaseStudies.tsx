@@ -63,23 +63,7 @@ export default function CaseStudies() {
   }
 
   function handleStudySelect(study: CaseStudy) {
-    const intelligenceCase =
-      study.id === "flexpoint"
-        ? "flex"
-        : study.id === "zhouse"
-          ? "zhouse"
-          : null;
-
-    if (intelligenceCase) {
-      window.location.href = `/intelligence?case=${intelligenceCase}`;
-      return;
-    }
-
-    setFeaturedStudy(study);
-
-    if (selectedIndustry === "All") return;
-
-    setSelectedIndustry(study.industry);
+    window.location.href = `/case-studies?case=${study.id}`;
   }
 
   const relatedStudies = filteredStudies.filter(
