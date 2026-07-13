@@ -138,13 +138,13 @@ export default function LargeCard() {
 
           </div>
 
-          <button className="mt-8 flex items-center gap-2 font-semibold text-[#071A63] transition hover:gap-4">
+          <a href="/services" className="mt-8 flex items-center gap-2 font-semibold text-[#071A63] transition hover:gap-4">
 
             Explore Advertising
 
             <ArrowUpRight size={18} />
 
-          </button>
+          </a>
 
         </div>
 

@@ -7,7 +7,7 @@ import {
   Sparkles,
 } from "lucide-react";
 
-import { CaseStudy } from "./caseStudies";
+import type { CaseStudy } from "./case-study-data";
 
 interface Props {
   studies: CaseStudy[];

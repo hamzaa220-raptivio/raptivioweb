@@ -158,9 +158,7 @@ export default function FeaturedCase({
           </div>
 
           <motion.a
-            href={study.pdf}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/case-studies"
             whileHover={{
               scale: 1.03,
             }}

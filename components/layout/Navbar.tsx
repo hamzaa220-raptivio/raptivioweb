@@ -1,13 +1,14 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 
 const navLinks = [
   { label: "Growth Services", href: "/services" },
-  { label: "Case Studies", href: "#case-studies" },
-  { label: "Solutions", href: "#solutions" },
-  { label: "Intelligence", href: "#intelligence" },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "Solutions", href: "/solutions" },
+  { label: "Intelligence", href: "/intelligence" },
 ];
 
 export default function Navbar() {
@@ -16,8 +17,15 @@ export default function Navbar() {
   return (
     <nav className="fixed left-1/2 top-5 z-50 w-[95%] max-w-7xl -translate-x-1/2 rounded-[28px] bg-white/90 px-5 py-3 shadow-xl backdrop-blur-xl lg:rounded-full lg:px-8">
       <div className="flex items-center justify-between">
-        <a href="#home" className="text-2xl font-bold text-[#0B1E63] md:text-3xl">
-          <span className="text-[#F5B800]">R</span>aptivio
+        <a href="/" className="flex items-center">
+          <Image
+            src="/logos/raptivio-logo.png"
+            alt="Raptivio"
+            width={260}
+            height={54}
+            className="h-auto w-32 md:w-36"
+            priority
+          />
         </a>
 
         <div className="hidden gap-10 lg:flex">
@@ -34,7 +42,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-3">
           <a
-            href="#contact"
+            href="/contact"
             className="hidden rounded-full bg-[#0B1E63] px-6 py-3 text-sm font-semibold text-white transition hover:scale-105 hover:bg-[#102d8f] sm:inline-flex"
           >
             Get Started
@@ -66,7 +74,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#contact"
+              href="/contact"
               onClick={() => setMenuOpen(false)}
               className="mt-2 rounded-full bg-[#0B1E63] px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-[#102d8f] sm:hidden"
             >

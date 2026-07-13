@@ -115,13 +115,13 @@ export default function MarketingCard() {
 
         {/* CTA */}
 
-        <button className="mt-7 flex items-center gap-2 font-semibold text-[#071A63] transition-all hover:gap-4">
+        <a href="/services" className="mt-7 flex items-center gap-2 font-semibold text-[#071A63] transition-all hover:gap-4">
 
           Explore Creative
 
           <ArrowUpRight size={18} />
 
-        </button>
+        </a>
 
       </div>
 

@@ -25,8 +25,7 @@ export default function HeroGalaxyCTA() {
           </p>
 
           <a
-            href="https://calendly.com/gsstechsolutions/30min"
-            target="_blank"
+            href="/contact"
             rel="noreferrer"
             className="group mt-10 inline-flex items-center gap-4 rounded-full bg-[#FFCA00] px-8 py-4 text-base font-semibold text-[#071A63] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_70px_rgba(255,202,0,.35)]"
           >

@@ -19,14 +19,14 @@ export default function ContactCTA() {
 
         <div className="flex flex-col gap-4 sm:flex-row lg:justify-end">
           <a
-            href="mailto:hello@raptivio.com"
+            href="/contact"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-[#F4B400] px-7 py-4 text-sm font-bold text-[#071A63] transition hover:scale-105"
           >
             <MessageCircle size={18} />
             Book a Call
           </a>
           <a
-            href="#growth-services"
+            href="/services"
             className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-7 py-4 text-sm font-bold text-white transition hover:bg-white/10"
           >
             View Services

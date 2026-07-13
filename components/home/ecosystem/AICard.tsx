@@ -152,13 +152,13 @@ export default function AICard() {
 
         </div>
 
-        <button className="mt-6 flex items-center gap-2 font-semibold text-[#071A63] transition hover:gap-4">
+        <a href="/services" className="mt-6 flex items-center gap-2 font-semibold text-[#071A63] transition hover:gap-4">
 
           Explore AI
 
           <ArrowUpRight size={18} />
 
-        </button>
+        </a>
 
       </div>
 

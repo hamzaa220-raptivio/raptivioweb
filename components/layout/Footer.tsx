@@ -1,77 +1,8 @@
 import Image from "next/image";
 
 const footerLinks = [
-  {
-    title: "Company",
-    links: ["Growth Services", "Case Studies", "Insights", "Contact"],
-  },
-  {
-    title: "Solutions",
-    links: ["AI Automation", "Performance Marketing", "Web Development"],
-  },
+  { title: "Company", links: [{ label: "Growth Services", href: "/services" }, { label: "Case Studies", href: "/case-studies" }, { label: "Insights", href: "/#insights" }, { label: "Contact", href: "/contact" }] },
+  { title: "Solutions", links: [{ label: "Accounting Operations System", href: "/solutions#solutions" }, { label: "Human Resource Management System", href: "/solutions#solutions" }, { label: "Salesforce Customer Intelligence Platform", href: "/solutions#solutions" }, { label: "B2B Growth System", href: "/solutions#solutions" }] },
 ];
 
-export default function Footer() {
-  return (
-    <footer className="relative bg-white px-6 py-16 text-[#111318]">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr]">
-          <div>
-            <h2 className="text-4xl font-semibold tracking-[-0.04em] md:text-5xl">
-              Experience intelligent growth
-            </h2>
-          </div>
-
-          <div className="grid gap-10 sm:grid-cols-2">
-            {footerLinks.map((group) => (
-              <div key={group.title}>
-                <h3 className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
-                  {group.title}
-                </h3>
-
-                <div className="grid gap-4">
-                  {group.links.map((link) => (
-                    <a
-                      key={link}
-                      href="#"
-                      className="text-lg font-medium transition hover:text-[#071A63]"
-                    >
-                      {link}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-24 flex justify-center">
-          <Image
-            src="/logos/raptivio-logo.png"
-            alt="Raptivio"
-            width={1800}
-            height={360}
-            className="h-auto w-full max-w-[1500px] object-contain grayscale brightness-50 opacity-90"
-            priority
-          />
-        </div>
-
-        <div className="mt-12 flex flex-col gap-6 border-t border-slate-200 pt-8 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
-          <div className="flex flex-wrap gap-6">
-            <a href="#" className="transition hover:text-[#071A63]">
-              About
-            </a>
-            <a href="#" className="transition hover:text-[#071A63]">
-              Privacy
-            </a>
-            <a href="#" className="transition hover:text-[#071A63]">
-              Terms
-            </a>
-          </div>
-
-          <p>© 2026 Raptivio. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
-  );
-}
+export default function Footer() { return <footer className="relative bg-white px-6 py-16 text-[#111318]"><div className="mx-auto max-w-7xl"><div className="grid gap-12 lg:grid-cols-[1.2fr_1fr]"><div><h2 className="text-4xl font-semibold tracking-[-0.04em] md:text-5xl">Experience intelligent growth</h2></div><div className="grid gap-10 sm:grid-cols-2">{footerLinks.map((group) => <div key={group.title}><h3 className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">{group.title}</h3><div className="grid gap-4">{group.links.map((link) => <a key={link.label} href={link.href} className="text-lg font-medium transition hover:text-[#071A63]">{link.label}</a>)}</div></div>)}</div></div><div className="mt-24 flex justify-center"><Image src="/logos/raptivio-logo.png" alt="Raptivio" width={1800} height={360} className="h-auto w-full max-w-[1500px] object-contain grayscale brightness-50 opacity-90" priority /></div><div className="mt-12 flex flex-col gap-6 border-t border-slate-200 pt-8 text-sm text-slate-500 md:flex-row md:items-center md:justify-between"><div className="flex flex-wrap gap-6"><a href="/privacy" className="transition hover:text-[#071A63]">Privacy</a><a href="/terms" className="transition hover:text-[#071A63]">Terms</a></div><p>© 2026 Raptivio. All rights reserved.</p></div></div></footer>; }

@@ -15,9 +15,19 @@ import {
   CaseStudy,
 } from "./case-study-data";
 
+const homeStudyIds = new Set([
+  "flexpoint",
+  "zhouse",
+  "upzone",
+  "fatima-dental",
+  "kama-uae",
+  "reliable-accounting-website",
+]);
+const homeStudies = caseStudies.filter((study) => homeStudyIds.has(study.id));
+
 export default function CaseStudies() {
   const defaultStudy =
-    caseStudies.find((study) => study.featured) ?? caseStudies[0];
+    homeStudies.find((study) => study.featured) ?? homeStudies[0];
 
   const [selectedIndustry, setSelectedIndustry] =
     useState<Industry>("All");
@@ -27,10 +37,10 @@ export default function CaseStudies() {
 
   const filteredStudies = useMemo(() => {
     if (selectedIndustry === "All") {
-      return caseStudies;
+      return homeStudies;
     }
 
-    return caseStudies.filter(
+    return homeStudies.filter(
       (study) => study.industry === selectedIndustry
     );
   }, [selectedIndustry]);
@@ -43,7 +53,7 @@ export default function CaseStudies() {
       return;
     }
 
-    const firstStudy = caseStudies.find(
+    const firstStudy = homeStudies.find(
       (study) => study.industry === industry
     );
 
@@ -53,6 +63,18 @@ export default function CaseStudies() {
   }
 
   function handleStudySelect(study: CaseStudy) {
+    const intelligenceCase =
+      study.id === "flexpoint"
+        ? "flex"
+        : study.id === "zhouse"
+          ? "zhouse"
+          : null;
+
+    if (intelligenceCase) {
+      window.location.href = `/intelligence?case=${intelligenceCase}`;
+      return;
+    }
+
     setFeaturedStudy(study);
 
     if (selectedIndustry === "All") return;
@@ -111,7 +133,7 @@ export default function CaseStudies() {
             </p>
 
             <a
-              href="#contact"
+            href="/contact"
               className="mt-7 inline-flex items-center gap-2 rounded-full bg-[#FFCA00] px-6 py-3.5 text-sm font-bold text-[#071A63] transition hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(255,202,0,0.28)]"
             >
               Contact us
