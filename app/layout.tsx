@@ -1,11 +1,29 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import Footer from "@/components/layout/Footer";
+import SocialFollowPopup from "@/components/home/SocialFollowPopup";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Raptivio",
-  description: "AI Powered Growth Ecosystem",
+  metadataBase: new URL("https://www.raptivio.com"),
+  title: "Raptivio | An AI-Powered Ecosystem for Business Growth",
+  description:
+    "Raptivio combines AI automation, performance marketing, lead generation, websites and custom software to build intelligent growth systems for ambitious businesses.",
+  applicationName: "Raptivio",
+  authors: [{ name: "Raptivio", url: "https://www.raptivio.com" }],
+  creator: "Raptivio",
+  publisher: "Raptivio",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   icons: {
     icon: "/icon.png",
     shortcut: "/icon.png",
@@ -44,6 +62,7 @@ export default function RootLayout({
 
         {children}
         <Footer />
+        <SocialFollowPopup />
 
         <Script
           id="tawk-to"

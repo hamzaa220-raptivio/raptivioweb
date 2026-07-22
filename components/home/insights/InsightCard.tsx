@@ -31,7 +31,7 @@ export default function InsightCard({
         stiffness: 280,
         damping: 24,
       }}
-      className="group w-[430px] shrink-0"
+      className="group w-full shrink-0 md:w-[430px]"
     >
       <Link
         href={post.slug}
@@ -43,7 +43,7 @@ export default function InsightCard({
 
           {/* IMAGE */}
 
-          <div className="relative h-[270px] overflow-hidden rounded-[32px]">
+          <div className="relative h-[250px] overflow-hidden rounded-[32px] sm:h-[270px]">
 
             <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#F4B400]/10 blur-3xl" />
 
@@ -53,7 +53,7 @@ export default function InsightCard({
               src={post.image}
               alt={post.title}
               fill
-              sizes="430px"
+              sizes="(max-width: 767px) calc(100vw - 4rem), 430px"
               className="object-cover saturate-75 transition duration-700 group-hover:scale-105 group-hover:saturate-100"
             />
 
@@ -82,6 +82,24 @@ to-transparent" />
 
             </div>
 
+            {/* SUBTLE RAPTIVIO INSIGHTS MARK */}
+
+            <div className="absolute bottom-5 right-5 flex items-center gap-2 rounded-full border border-white/20 bg-white/75 px-3 py-2 opacity-70 shadow-sm backdrop-blur-md transition-opacity duration-300 group-hover:opacity-90">
+              <Image
+                src="/logos/raptivio-logo.png"
+                alt="Raptivio"
+                width={82}
+                height={16}
+                className="h-auto w-[72px] object-contain sm:w-[82px]"
+              />
+
+              <span className="h-3.5 w-px bg-[#071A63]/20" />
+
+              <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-[#071A63]/75 sm:text-[10px]">
+                Insights
+              </span>
+            </div>
+
           </div>
 
         </div>
@@ -90,7 +108,7 @@ to-transparent" />
 
         <div className="mt-7">
 
-          <h3 className="max-w-[88%] text-[25px] font-semibold leading-[1.18] tracking-[-0.03em] text-[#071A63] transition-colors duration-300 group-hover:text-[#0F3EA8]">
+          <h3 className="max-w-[95%] text-[22px] font-semibold leading-[1.18] tracking-[-0.03em] text-[#071A63] transition-colors duration-300 group-hover:text-[#0F3EA8] sm:max-w-[88%] sm:text-[25px]">
             {post.title}
           </h3>
 

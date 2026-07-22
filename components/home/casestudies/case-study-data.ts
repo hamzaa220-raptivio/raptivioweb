@@ -7,7 +7,7 @@ export type Industry =
   | "Consultancy"
   | "Education"
   | "Ecommerce"
-  | "Restaurant"
+  | "Home Improvement"
   | "Professional Services";
 
 export interface CaseStudy {
@@ -50,9 +50,74 @@ export const industries: Industry[] = [
   "Finance",
   "Consultancy",
   "Education",
+  "Home Improvement",
+  "Professional Services",
 ];
 
 export const caseStudies: CaseStudy[] = [
+  {
+    id: "quick-quartz",
+    company: "Quick Quartz",
+    industry: "Home Improvement",
+    country: "Ontario, Canada",
+
+    metric: "200+",
+    metricLabel: "Leads in 3 Months",
+
+    headline:
+      "An integrated paid media and SEO system that generated 200+ leads in three months.",
+
+    description:
+      "Raptivio connected Google Ads, Meta Ads, SEO, content and website optimisation to capture high-intent homeowners and build sustainable organic visibility for an Ontario quartz countertop specialist.",
+
+    services: [
+      "Google Ads",
+      "Meta Ads",
+      "SEO",
+      "Content Strategy",
+      "Website Optimisation",
+      "Analytics",
+    ],
+
+    platforms: [
+      "Google Ads",
+      "Meta Ads",
+      "Google Analytics",
+      "Google Business Profile",
+      "SEO",
+    ],
+
+    results: [
+      "Generated more than 200 leads in three months across the integrated acquisition system.",
+      "Produced 102 on-Facebook leads at CA$21.07 per lead and reached 27,476 people.",
+      "Recorded 45 calls through the Google Business Profile.",
+      "Secured three number-one organic rankings and at least eight tracked first-page keywords.",
+      "Attracted 3,048 website sessions with 1,535 engaged sessions.",
+      "Achieved a 23.87% Google Ads impression share and an 85.58% top-of-page rate.",
+    ],
+
+    stats: [
+      {
+        label: "Meta Leads",
+        value: "102",
+      },
+      {
+        label: "SEO #1 Rankings",
+        value: "3",
+      },
+      {
+        label: "Website Sessions",
+        value: "3,048",
+      },
+    ],
+
+    accent: "yellow",
+
+    featured: false,
+
+    pdf: "/case-studies/pdfs/quick-quartz-case-study.pdf",
+  },
+
   {
     id: "flexpoint",
     company: "FlexPoint Mortgage",
@@ -314,7 +379,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: "zeds-kitchen",
     company: "Zed's Kitchen & Cafe",
-    industry: "Restaurant",
+    industry: "Hospitality",
     country: "Pakistan",
     metric: "133%+",
     metricLabel: "Revenue Growth",

@@ -16,12 +16,15 @@ import {
 } from "./case-study-data";
 
 const homeStudyIds = new Set([
+  "quick-quartz",
   "flexpoint",
   "zhouse",
   "upzone",
-  "fatima-dental",
-  "kama-uae",
+  "fatima",
+  "kamauae",
+  "terteeb",
   "reliable-accounting-website",
+  "zeds-kitchen",
 ]);
 const homeStudies = caseStudies.filter((study) => homeStudyIds.has(study.id));
 
@@ -69,6 +72,8 @@ export default function CaseStudies() {
   const relatedStudies = filteredStudies.filter(
     (study) => study.id !== featuredStudy.id
   );
+  const visibleRelatedStudies =
+    selectedIndustry === "All" ? relatedStudies.slice(0, 6) : relatedStudies;
 
   return (
     <section className="relative overflow-hidden py-28">
@@ -93,10 +98,10 @@ export default function CaseStudies() {
 
         </div>
 
-        {relatedStudies.length > 0 && (
+        {visibleRelatedStudies.length > 0 && (
 
           <RelatedCases
-            studies={relatedStudies}
+            studies={visibleRelatedStudies}
             activeId={featuredStudy.id}
             onSelect={handleStudySelect}
           />

@@ -18,7 +18,7 @@ export default function ExploreCard() {
         stiffness: 280,
         damping: 24,
       }}
-      className="group w-[430px] shrink-0"
+      className="group w-full shrink-0 md:w-[430px]"
     >
       <Link
         href="/intelligence"

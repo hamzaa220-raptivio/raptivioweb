@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import QuantumBackground from "../cta/QuantumBackground";
 
 export default function HeroGalaxyCTA() {
@@ -18,15 +19,14 @@ export default function HeroGalaxyCTA() {
           </h2>
 
           <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300">
-            Whether you're launching a startup, scaling an established business
+            Whether you&apos;re launching a startup, scaling an established business
             or modernising your operations with AI, Raptivio helps ambitious
             companies build intelligent software, powerful digital experiences
             and predictable growth systems.
           </p>
 
-          <a
+          <Link
             href="/contact"
-            rel="noreferrer"
             className="group mt-10 inline-flex items-center gap-4 rounded-full bg-[#FFCA00] px-8 py-4 text-base font-semibold text-[#071A63] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_70px_rgba(255,202,0,.35)]"
           >
             Get Started Today
@@ -34,7 +34,7 @@ export default function HeroGalaxyCTA() {
               size={20}
               className="transition group-hover:translate-x-1"
             />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

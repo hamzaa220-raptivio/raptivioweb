@@ -21,15 +21,15 @@ const logos = [
 
 export default function ClientLogoMarquee() {
   return (
-    <section className="relative mt-6 overflow-hidden">
+    <section className="relative mt-14 overflow-hidden sm:mt-16">
 
       {/* Heading */}
 
-      <div className="mb-10 flex items-center gap-6">
+      <div className="mb-10 flex items-center gap-3 sm:gap-6">
 
         <div className="h-px flex-1 bg-slate-200" />
 
-        <p className="whitespace-nowrap text-xs font-semibold uppercase tracking-[0.35em] text-slate-500">
+        <p className="max-w-[230px] text-center text-[10px] font-semibold uppercase leading-5 tracking-[0.22em] text-slate-500 sm:max-w-none sm:whitespace-nowrap sm:text-xs sm:tracking-[0.35em]">
           Trusted by ambitious businesses worldwide
         </p>
 
@@ -37,23 +37,21 @@ export default function ClientLogoMarquee() {
 
       </div>
 
-      {/* Fade Left */}
-
-      <div className="pointer-events-none absolute left-0 top-0 z-20 h-full w-32 bg-gradient-to-r from-[#F8F9FC] to-transparent" />
-
-      {/* Fade Right */}
-
-      <div className="pointer-events-none absolute right-0 top-0 z-20 h-full w-32 bg-gradient-to-l from-[#F8F9FC] to-transparent" />
-
       <Marquee
         pauseOnHover
-        repeat={6}
-        className="[--duration:45s]"
+        repeat={4}
+        className="[--duration:42s] [--gap:0.75rem] sm:[--gap:1.25rem]"
+        style={{
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent, black 7%, black 93%, transparent)",
+          maskImage:
+            "linear-gradient(to right, transparent, black 7%, black 93%, transparent)",
+        }}
       >
         {logos.map((logo) => (
           <div
             key={logo.name}
-            className="flex w-[320px] items-center justify-center px-5"
+            className="flex w-[145px] items-center justify-center px-1 sm:w-[185px] lg:w-[205px]"
           >
             <Image
               src={logo.image}
@@ -61,7 +59,7 @@ export default function ClientLogoMarquee() {
               width={400}
               height={400}
               className="
-                h-36
+                h-24
                 w-auto
                 object-contain
                 grayscale
@@ -72,6 +70,7 @@ export default function ClientLogoMarquee() {
                 hover:grayscale-0
                 hover:opacity-100
                 hover:scale-110
+                sm:h-28
               "
             />
           </div>

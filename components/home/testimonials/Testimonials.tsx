@@ -7,7 +7,7 @@ export default function Testimonials() {
       id="testimonials"
       className="bg-white py-32"
     >
-      <div className="mx-auto max-w-[1600px] px-8">
+      <div className="mx-auto max-w-[1600px] px-8 lg:px-16 xl:px-20">
 
         <SectionHeading
           badge="Client Testimonials"

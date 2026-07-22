@@ -61,11 +61,11 @@ export default function FeaturedCase({
       transition={{
         duration: 0.45,
       }}
-      className="relative overflow-hidden rounded-[34px] border border-slate-200 bg-[#071120] shadow-2xl"
+      className="relative overflow-hidden rounded-[26px] border border-slate-200 bg-[#071120] shadow-2xl sm:rounded-[34px]"
     >
       <AnimatedBackground color={study.accent} />
 
-      <div className="relative z-10 grid gap-8 p-8 lg:grid-cols-[1.15fr_0.85fr]">
+      <div className="relative z-10 grid gap-7 p-5 sm:p-8 lg:grid-cols-[1.15fr_0.85fr]">
 
         {/* LEFT */}
 
@@ -93,15 +93,15 @@ export default function FeaturedCase({
 
           </div>
 
-          <h2 className="mt-6 font-manrope text-5xl font-bold leading-tight text-white">
+          <h2 className="mt-6 break-words font-manrope text-3xl font-bold leading-tight text-white sm:text-5xl">
             {study.company}
           </h2>
 
-          <h3 className="mt-5 max-w-xl text-2xl font-semibold leading-snug text-white">
+          <h3 className="mt-5 max-w-xl text-xl font-semibold leading-snug text-white sm:text-2xl">
             {study.headline ?? study.metricLabel}
           </h3>
 
-          <p className="mt-5 max-w-xl text-lg leading-8 text-slate-300">
+          <p className="mt-5 max-w-xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
             {study.description}
           </p>
 
@@ -158,14 +158,14 @@ export default function FeaturedCase({
           </div>
 
           <motion.a
-            href="/case-studies"
+            href={`/case-studies?case=${study.id}`}
             whileHover={{
               scale: 1.03,
             }}
             whileTap={{
               scale: 0.97,
             }}
-            className="mt-10 inline-flex items-center gap-3 rounded-full bg-white px-7 py-4 font-semibold text-[#071A63]"
+            className="mt-10 inline-flex w-full items-center justify-center gap-3 rounded-full bg-white px-7 py-4 font-semibold text-[#071A63] sm:w-auto"
           >
 
             Read Full Case Study
@@ -184,7 +184,7 @@ export default function FeaturedCase({
             whileHover={{
               y: -4,
             }}
-            className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-xl"
+            className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl sm:p-7"
           >
 
             <div
@@ -198,7 +198,7 @@ export default function FeaturedCase({
             </p>
 
             <div
-              className="mt-5 text-6xl font-bold"
+              className="mt-5 break-words text-4xl font-bold sm:text-6xl"
               style={{
                 color: accent.glow,
               }}
@@ -214,7 +214,7 @@ export default function FeaturedCase({
 
           {/* Stats */}
 
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
 
             {(study.stats ?? []).map((stat) => (
 

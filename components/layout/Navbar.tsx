@@ -2,6 +2,7 @@
 
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 const navLinks = [
@@ -17,7 +18,7 @@ export default function Navbar() {
   return (
     <nav className="fixed left-1/2 top-5 z-50 w-[95%] max-w-7xl -translate-x-1/2 rounded-[28px] bg-white/90 px-5 py-3 shadow-xl backdrop-blur-xl lg:rounded-full lg:px-8">
       <div className="flex items-center justify-between">
-        <a href="/" className="flex items-center">
+        <Link href="/" className="flex items-center">
           <Image
             src="/logos/raptivio-logo.png"
             alt="Raptivio"
@@ -26,27 +27,27 @@ export default function Navbar() {
             className="h-auto w-32 md:w-36"
             priority
           />
-        </a>
+        </Link>
 
         <div className="hidden gap-10 lg:flex">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-sm font-medium text-slate-700 transition hover:text-blue-700"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
         <div className="flex items-center gap-3">
-          <a
+          <Link
             href="/contact"
             className="hidden rounded-full bg-[#0B1E63] px-6 py-3 text-sm font-semibold text-white transition hover:scale-105 hover:bg-[#102d8f] sm:inline-flex"
           >
             Get Started
-          </a>
+          </Link>
 
           <button
             type="button"
@@ -64,22 +65,22 @@ export default function Navbar() {
         <div className="mt-4 border-t border-slate-100 pt-4 lg:hidden">
           <div className="grid gap-2">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
                 className="rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100 hover:text-[#0B1E63]"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
-            <a
+            <Link
               href="/contact"
               onClick={() => setMenuOpen(false)}
               className="mt-2 rounded-full bg-[#0B1E63] px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-[#102d8f] sm:hidden"
             >
               Get Started
-            </a>
+            </Link>
           </div>
         </div>
       )}

@@ -85,6 +85,7 @@ export default function RelatedCases({
 
               <motion.button
                 key={study.id}
+                type="button"
                 layout
                 initial={{
                   opacity: 0,

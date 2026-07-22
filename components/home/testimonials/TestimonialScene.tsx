@@ -8,8 +8,6 @@ import {
 
 import FloatingTestimonials from "./FloatingTestimonials";
 import Mascot from "./Mascot";
-import TestimonialCard from "./TestimonialCard";
-import { testimonials } from "./testimonial-data";
 
 export default function TestimonialScene() {
 

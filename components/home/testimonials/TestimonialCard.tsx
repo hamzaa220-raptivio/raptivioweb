@@ -47,7 +47,7 @@ export default function TestimonialCard({
 
       <p className="text-[17px] leading-8 tracking-[-0.02em] text-[#071A63]">
 
-        "{testimonial.quote}"
+        &ldquo;{testimonial.quote}&rdquo;
 
       </p>
 

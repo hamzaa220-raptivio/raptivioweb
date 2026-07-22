@@ -1,6 +1,14 @@
+import { createPageMetadata } from "@/lib/seo";
 import { ArrowRight, BarChart3, Bot, Brain, CheckCircle2, Database, Globe, Layers3, LineChart, MessageSquare, Palette, Search, ShieldCheck, Sparkles, Target, Workflow } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import CTA from "@/components/home/cta/CTA";
+
+export const metadata = createPageMetadata({
+  title: "Marketing, AI, Automation & Development Services | Raptivio",
+  description:
+    "Explore Raptivio services for Google Ads, Meta Ads, lead generation, sales growth, email marketing, AI automation, content, branding, websites and web apps.",
+  path: "/services",
+});
 
 const serviceGroups = [
   { eyebrow: "Growth Engine", title: "Lead generation, Google Ads and Meta Ads built as one system.", description: "We build full-funnel acquisition systems for businesses that need predictable demand, not random campaign activity. From offer strategy and landing pages to Google Ads, Meta Ads, tracking and lead qualification, everything is connected around one goal: better leads at a lower cost.", icon: BarChart3, color: "#FFCA00", items: ["Google Search, Performance Max and YouTube campaigns", "Meta Ads for lead generation, retargeting and demand creation", "Landing pages designed around conversion, speed and trust", "CRM-ready lead capture, tagging and follow-up workflows", "Analytics, attribution and weekly optimisation decisions", "Reputation-led campaigns for clinics, restaurants and service brands"], proof: undefined },

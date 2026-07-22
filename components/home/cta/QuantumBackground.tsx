@@ -1,6 +1,6 @@
 "use client";
 
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 
@@ -28,7 +28,7 @@ function StarField() {
 
   useFrame(() => {
     if (pointsRef.current) {
-      pointsRef.current.rotation.y += 0.0005;
+      pointsRef.current.rotation.y += 0.001;
     }
   });
 
@@ -44,22 +44,29 @@ function StarField() {
 
 function CosmicGrid() {
   const meshRef = useRef<THREE.Mesh>(null);
+  const geometryRef = useRef<THREE.PlaneGeometry>(null);
+  const originalPositionsRef = useRef<Float32Array | null>(null);
   const smoothMouse = useRef(new THREE.Vector2(0, 0));
 
-  const geometry = useMemo(() => new THREE.PlaneGeometry(40, 40, 60, 60), []);
+  useEffect(() => {
+    const geometry = geometryRef.current;
+    if (!geometry) return;
 
-  const originalPositions = useMemo(
-    () =>
-      new Float32Array(
-        geometry.attributes.position.array as ArrayLike<number>
-      ),
-    [geometry]
-  );
+    originalPositionsRef.current = new Float32Array(
+      geometry.attributes.position.array as ArrayLike<number>
+    );
 
-  const { pointer } = useThree();
+    return () => {
+      originalPositionsRef.current = null;
+    };
+  }, []);
 
-  useFrame(() => {
-    smoothMouse.current.lerp(pointer, 0.1);
+  useFrame((state) => {
+    smoothMouse.current.lerp(state.pointer, 0.22);
+
+    const geometry = geometryRef.current;
+    const originalPositions = originalPositionsRef.current;
+    if (!geometry || !originalPositions) return;
 
     const positions = geometry.attributes.position.array as Float32Array;
 
@@ -84,17 +91,13 @@ function CosmicGrid() {
     geometry.attributes.position.needsUpdate = true;
   });
 
-  useEffect(() => {
-    return () => geometry.dispose();
-  }, [geometry]);
-
   return (
     <mesh
       ref={meshRef}
-      geometry={geometry}
       rotation={[-Math.PI / 2.5, 0, 0]}
       position={[0, -2, 0]}
     >
+      <planeGeometry ref={geometryRef} args={[40, 40, 60, 60]} />
       <meshBasicMaterial
         color="#2244ff"
         wireframe
@@ -128,13 +131,15 @@ function CosmicCore() {
 }
 
 function CameraRig() {
-  const { camera, pointer } = useThree();
   const smoothMouse = useRef(new THREE.Vector2(0, 0));
 
-  useFrame(() => {
-    smoothMouse.current.lerp(pointer, 0.05);
+  useFrame((state) => {
+    smoothMouse.current.lerp(state.pointer, 0.12);
 
-    camera.position.x += (smoothMouse.current.x * 2 - camera.position.x) * 0.05;
+    const camera = state.camera;
+
+    camera.position.x +=
+      (smoothMouse.current.x * 2 - camera.position.x) * 0.12;
     camera.rotation.y = -smoothMouse.current.x * 0.1;
     camera.lookAt(0, 0, 0);
   });

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
@@ -65,11 +65,15 @@ export default function Network() {
     return new Float32Array(lines);
   }, []);
 
-  useMemo(() => {
-    window.addEventListener("pointermove", (e) => {
+  useEffect(() => {
+    const handlePointerMove = (e: PointerEvent) => {
       mouse.current.x = (e.clientX / window.innerWidth) * 2 - 1;
       mouse.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
-    });
+    };
+
+    window.addEventListener("pointermove", handlePointerMove);
+
+    return () => window.removeEventListener("pointermove", handlePointerMove);
   }, []);
 
   useFrame((state) => {

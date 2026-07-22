@@ -24,7 +24,7 @@ export const blogPosts: BlogPost[] = [
 
     title: "The Shift Toward Human-to-Human (H2H) Content",
 
-    slug: "/intelligence?case=h2h",
+    slug: "/intelligence/human-to-human-content-marketing",
 
     category: "Marketing",
 
@@ -40,7 +40,7 @@ export const blogPosts: BlogPost[] = [
 
     title: "SEO in 2026: Why Real Experience Matters More Than Keywords",
 
-    slug: "/intelligence?case=seo",
+    slug: "/intelligence/seo-real-experience-matters",
 
     category: "SEO",
 
@@ -56,7 +56,7 @@ export const blogPosts: BlogPost[] = [
 
     title: "Web Development Trends for 2026: Faster, Simpler and More Personal",
 
-    slug: "/intelligence?case=web",
+    slug: "/intelligence/web-development-trends-2026",
 
     category: "Web Development",
 

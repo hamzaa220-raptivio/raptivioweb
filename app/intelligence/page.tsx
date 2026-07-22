@@ -1,19 +1,226 @@
 "use client";
-import { Suspense, useMemo, useState } from "react";
+
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { ArrowRight, BarChart3, BookOpen, Brain, BriefcaseBusiness, Clock, Filter, Globe, Layers3, LineChart, Megaphone, Search, Sparkles, X } from "lucide-react";
+import {
+  BookOpen,
+  Clock,
+  Filter,
+  Globe,
+  Megaphone,
+  Search,
+  X,
+} from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import CTA from "@/components/home/cta/CTA";
-type Entry = { id: string; type: "Insight" | "Case File"; category: string; title: string; eyebrow: string; readTime: string; summary: string; icon: typeof Sparkles; accent: "blue" | "yellow" | "green" | "purple"; source?: string; sections: { heading: string; body: string }[]; points: string[] };
-const entries: Entry[] = [
-{id:"h2h",type:"Insight",category:"Marketing",title:"The Shift Toward Human-to-Human (H2H) Content",eyebrow:"Brand Intelligence",readTime:"6 min read",summary:"Why content that feels human, specific and useful is becoming more valuable than generic brand posting.",icon:Megaphone,accent:"yellow",sections:[{heading:"The shift from more content to better content",body:"For years, brands focused on producing more content, not better content. Articles were written to please algorithms, not people. But as we move into 2026, the biggest change in content marketing is the shift toward Human-to-Human communication. This is no longer a buzzword; it is becoming the new normal. People are tired of robotic content. They want brands that sound real, honest and easy to understand. They want stories, not scripts, and messages that feel like they are coming from someone who understands them rather than a machine trying to rank on Google."},{heading:"Why the platforms are rewarding it",body:"The big platforms have noticed the same change. Google is rewarding content that feels natural and helpful. Social platforms boost posts that start real conversations. Even email marketing is moving toward simple, friendly writing. The days of stuffing keywords and using complex marketing terms are fading fast. Brands that win attention will speak clearly and connect emotionally. They will understand what their audience feels, not just what they search for, and create content that sounds like it was written by a real person who cares."},{heading:"Trust is the competitive advantage",body:"H2H content builds trust faster. When people feel understood, they engage more, share more and return more often. It is no longer enough to capture attention; you have to keep it by being genuine. This does not mean ignoring data or strategy. It means using data to understand people, not trick them. Numbers matter, but emotions matter too. In 2026 and beyond, the fastest-growing brands will write like they talk, keep things simple and make their audience feel valued. Content is no longer about sounding smart; it is about sounding real. If you want H2H content for your brand, connect with Raptivio's experts to get started."}],points:["Write for people, not algorithms alone.","Use real stories and clear language.","Connect content to genuine business value."]},
-{id:"seo",type:"Insight",category:"SEO",title:"SEO in 2026: Why Real Experience Matters More Than Keywords",eyebrow:"Search Intelligence",readTime:"7 min read",summary:"Search is moving toward credibility, usefulness and experience. Keywords still matter, but they are no longer enough.",icon:Search,accent:"blue",sections:[{heading:"Proof has replaced theory",body:"SEO has changed more in the last two years than it did in the previous ten. As we move into 2026, the biggest shift is Google's focus on real experience. Search engines want content backed by proof, not theory. They want to rank brands that actually know what they are talking about. The old approach of writing long articles filled with keywords is losing power. Instead, Google wants useful, original content written by people with real knowledge of the topic. Experience-based SEO is now at the centre of ranking."},{heading:"What experience-based SEO looks like",body:"Brands must move away from generic content. Instead of repeating information that already exists online, search engines want creators to share insights, examples, results and real stories. This content helps users more, and Google knows it. User behaviour also plays a bigger role. If people stay longer on a page, read the content or click deeper into a site, Google sees the brand as more trustworthy. Helpful content keeps people engaged and improves rankings without tricks."},{heading:"The complete page experience",body:"SEO in 2026 includes a better on-page experience. Fast loading, clean layouts, easy navigation and simple language all play a major role. Great content cannot rank effectively if the page is slow or confusing. Brand reputation also matters: reviews, mentions and references help visibility. The brands that will win combine expertise with real value. Build helpful, honest content backed by experience, then support it with fast pages, strong service content and credible case studies. If you want Raptivio to improve your SEO with experience-based content, connect with our experts today."}],points:["Share evidence, examples and outcomes.","Improve speed and navigation.","Build reputation alongside content."]},
-{id:"web",type:"Insight",category:"Web Development",title:"Web Development Trends for 2026: Faster, Simpler, and More Personal",eyebrow:"Digital Product",readTime:"8 min read",summary:"The next generation of websites will feel faster, cleaner and more connected to business systems.",icon:Globe,accent:"purple",sections:[{heading:"Speed is now the starting point",body:"Web development in 2026 is about speed, simplicity and personalisation. People no longer wait for a slow website to load. They do not want heavy animations or complicated layouts; they want clean, fast experiences that work on every device. The first major trend is ultra-fast loading. Google and other platforms push fast websites higher, and users trust them more. Developers are focusing on lighter code, optimised images and fewer scripts. The goal is simple: load instantly."},{heading:"Personal, simple and mobile-first",body:"Another trend is AI-powered personalisation. Websites can adjust in real time based on what each visitor needs: smart recommendations, personalised messages or journeys that change based on behaviour. At the same time, simplicity is becoming more important. Websites with too many sections, animations or effects feel outdated. Clean layouts with short text, simple flows and easy navigation are taking over. Mobile-first design remains essential because most people browse on phones, and faster mobile pages often lead to higher conversions and better satisfaction."},{heading:"Security and storytelling",body:"Security is another big focus. With more data being collected, secure forms, updated CMS systems and strong hosting are baseline requirements, not upgrades. Finally, brands are investing more in storytelling through design. Websites are no longer brochures; they need to guide users, explain benefits simply and make visitors feel something. Clear visuals, human-centred writing and honest messaging all play a role. The future belongs to brands that combine speed, simplicity and real human connection. If you want a fast, clean, high-performing website built for 2026 standards, connect with Raptivio's experts today."}],points:["Optimise for instant loading.","Design mobile-first journeys.","Use personalisation only where useful."]},
-{id:"flex",type:"Case File",category:"Growth",title:"FlexPoint Mortgage: From Paid Search Traffic to Qualified Leads",eyebrow:"Mortgage Growth",readTime:"4 min read",summary:"Google Ads and landing page optimisation improved conversion rate from 2.84% to 14.65%.",icon:BarChart3,accent:"yellow",source:"https://www.raptivio.com/wp-content/uploads/2025/11/FlexPoint-Mortgage-US-Case-Study.pdf",sections:[{heading:"The result",body:"Landing page conversion improved from 2.84% to 14.65%, creating a stronger paid acquisition engine."}],points:["Google Ads","Landing pages","CRO"]},
-{id:"zhouse",type:"Case File",category:"Hospitality",title:"Z House Coworking: A Connected Growth Ecosystem",eyebrow:"Coworking Growth",readTime:"4 min read",summary:"Google Ads, Meta Ads, landing pages, lead management and Zoho One generated 2,000+ qualified leads.",icon:BriefcaseBusiness,accent:"blue",sections:[{heading:"The result",body:"A connected system improved lead handling, follow-up and operations visibility."}],points:["Google Ads","Meta Ads","Zoho One"]},
-];
-const styles={blue:"from-[#071A63] to-[#2A7BFF]",yellow:"from-[#FFCA00] to-[#071A63]",green:"from-emerald-500 to-[#071A63]",purple:"from-violet-600 to-[#071A63]"};
-function IntelligenceContent(){const params=useSearchParams();const [category,setCategory]=useState("All");const [active,setActive]=useState<Entry|null>(()=>entries.find(e=>e.id===params.get("case"))??null);const filtered=useMemo(()=>category==="All"?entries:entries.filter(e=>e.category===category),[category]);const categories=["All",...Array.from(new Set(entries.map(e=>e.category)))];const featured=entries[0];return <><Navbar/><main className="overflow-hidden bg-[#F8F9FC]"><section className="relative px-6 pb-16 pt-40 md:pb-24 md:pt-44"><div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.9fr_1.1fr] lg:items-end"><div><span className="rounded-full border border-slate-200 bg-white/80 px-5 py-2 text-xs font-bold uppercase tracking-[.32em] text-[#071A63]">Raptivio Intelligence</span><h1 className="mt-8 font-manrope text-5xl font-bold leading-[1.02] tracking-[-.05em] text-[#071A63] md:text-7xl">Ideas, case files and growth thinking for modern businesses.</h1><p className="mt-7 text-lg leading-8 text-slate-600 md:text-xl">Read practical thinking across AI, content, search, web development and growth systems.</p></div><button onClick={()=>setActive(featured)} className="rounded-[34px] bg-[#071A63] p-8 text-left text-white shadow-2xl"><BookOpen/><p className="mt-8 text-sm font-bold uppercase tracking-[.28em] text-white/45">Featured</p><h2 className="mt-4 text-3xl font-bold md:text-5xl">{featured.title}</h2><p className="mt-5 text-white/70">{featured.summary}</p></button></div></section><section className="px-6 py-10 md:py-16"><div className="mx-auto max-w-7xl"><div className="mb-8 flex items-center justify-between"><div><p className="text-sm font-bold uppercase tracking-[.32em] text-[#FFCA00]">Library</p><h2 className="mt-3 font-manrope text-4xl font-bold text-[#071A63]">Pick what you want to read.</h2></div><div className="flex items-center gap-2 rounded-full border bg-white p-2"><Filter size={17}/><select value={category} onChange={e=>setCategory(e.target.value)} className="bg-transparent px-3 py-2 font-semibold text-[#071A63]">{categories.map(c=><option key={c}>{c}</option>)}</select></div></div><div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">{filtered.map(entry=>{const Icon=entry.icon;return <button key={entry.id} onClick={()=>setActive(entry)} className="min-h-[330px] rounded-[30px] border border-slate-200 bg-white p-6 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-xl"><div className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${styles[entry.accent]} text-white`}><Icon/></div><p className="mt-7 text-xs font-bold uppercase tracking-[.26em] text-[#FFCA00]">{entry.category}</p><h3 className="mt-4 text-2xl font-bold text-[#071A63]">{entry.title}</h3><p className="mt-4 text-sm leading-7 text-slate-600">{entry.summary}</p><span className="mt-7 inline-flex items-center gap-2 text-sm text-slate-500"><Clock size={15}/>{entry.readTime}</span></button>})}</div></div></section>{active&&<section className="fixed inset-0 z-[80] overflow-y-auto bg-[#071A63]/35 p-4 backdrop-blur-md"><div className="mx-auto max-w-4xl rounded-[34px] bg-white shadow-2xl"><div className={`relative bg-gradient-to-br ${styles[active.accent]} p-10 text-white`}><button onClick={()=>setActive(null)} className="absolute right-5 top-5"><X/></button><h2 className="text-4xl font-bold">{active.title}</h2><p className="mt-5 text-white/75">{active.summary}</p></div><div className="grid gap-8 p-8 md:grid-cols-[1fr_240px]"> <article className="space-y-7">{active.sections.map(s=><div key={s.heading}><h3 className="text-2xl font-bold text-[#071A63]">{s.heading}</h3><p className="mt-3 leading-8 text-slate-700">{s.body}</p></div>)}</article><aside><p className="font-bold text-[#071A63]">Key Points</p>{active.points.map(p=><p key={p} className="mt-3 flex gap-2 text-sm text-slate-700"><Brain size={16}/>{p}</p>)}{active.source&&<a href={active.source} target="_blank" rel="noreferrer" className="mt-7 inline-flex rounded-full bg-[#071A63] px-5 py-3 text-sm font-semibold text-white">Read source <ArrowRight size={16}/></a>}</aside></div></div></section>}<CTA/></main></>}
+import ArticleReader from "@/components/intelligence/ArticleReader";
+import {
+  getIntelligenceArticle,
+  intelligenceArticles,
+  type IntelligenceArticle,
+} from "@/components/intelligence/intelligence-data";
+
+const accentStyles = {
+  blue: "from-[#071A63] to-[#2A7BFF]",
+  yellow: "from-[#FFCA00] to-[#071A63]",
+  purple: "from-violet-600 to-[#071A63]",
+};
+
+const categoryIcons = {
+  Marketing: Megaphone,
+  SEO: Search,
+  "Web Development": Globe,
+};
+
+function IntelligenceContent() {
+  const params = useSearchParams();
+  const legacyArticle = getIntelligenceArticle(params.get("case") ?? "");
+  const [category, setCategory] = useState("All");
+  const [active, setActive] = useState<IntelligenceArticle | null>(
+    legacyArticle ?? null,
+  );
+  const filtered = useMemo(
+    () =>
+      category === "All"
+        ? intelligenceArticles
+        : intelligenceArticles.filter((article) => article.category === category),
+    [category],
+  );
+  const categories = [
+    "All",
+    ...Array.from(new Set(intelligenceArticles.map((article) => article.category))),
+  ];
+  const featured = intelligenceArticles[0];
+
+  useEffect(() => {
+    if (!active) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [active]);
+
+  useEffect(() => {
+    function syncArticleWithHistory() {
+      if (window.location.pathname === "/intelligence") {
+        setActive(null);
+        return;
+      }
+
+      const slug = window.location.pathname.split("/").filter(Boolean).at(-1);
+      if (slug) setActive(getIntelligenceArticle(slug) ?? null);
+    }
+
+    window.addEventListener("popstate", syncArticleWithHistory);
+    return () => window.removeEventListener("popstate", syncArticleWithHistory);
+  }, []);
+
+  function openArticle(article: IntelligenceArticle) {
+    setActive(article);
+    window.history.pushState(
+      { intelligenceModal: true },
+      "",
+      `/intelligence/${article.slug}`,
+    );
+  }
+
+  function closeArticle() {
+    setActive(null);
+    window.history.replaceState(null, "", "/intelligence");
+  }
+
+  return (
+    <>
+      <Navbar />
+      <main className="overflow-hidden bg-[#F8F9FC]">
+        <section className="relative px-6 pb-16 pt-40 md:pb-24 md:pt-44">
+          <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+            <div>
+              <span className="rounded-full border border-slate-200 bg-white/80 px-5 py-2 text-xs font-bold uppercase tracking-[0.32em] text-[#071A63]">
+                Raptivio Intelligence
+              </span>
+              <h1 className="mt-8 font-manrope text-5xl font-bold leading-[1.02] tracking-[-0.05em] text-[#071A63] md:text-7xl">
+                Ideas and growth thinking for modern businesses.
+              </h1>
+              <p className="mt-7 text-lg leading-8 text-slate-600 md:text-xl">
+                Read practical thinking across AI, content, search, web
+                development and growth systems.
+              </p>
+            </div>
+
+            <a
+              href={`/intelligence/${featured.slug}`}
+              onClick={(event) => {
+                event.preventDefault();
+                openArticle(featured);
+              }}
+              className="rounded-[34px] bg-[#071A63] p-8 text-left text-white shadow-2xl transition hover:-translate-y-1"
+            >
+              <BookOpen />
+              <p className="mt-8 text-sm font-bold uppercase tracking-[0.28em] text-white/45">
+                Featured
+              </p>
+              <h2 className="mt-4 text-3xl font-bold md:text-5xl">
+                {featured.title}
+              </h2>
+              <p className="mt-5 leading-7 text-white/70">{featured.summary}</p>
+            </a>
+          </div>
+        </section>
+
+        <section className="px-6 py-10 md:py-16">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-8 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="text-sm font-bold uppercase tracking-[0.32em] text-[#FFCA00]">
+                  Library
+                </p>
+                <h2 className="mt-3 font-manrope text-4xl font-bold text-[#071A63]">
+                  Pick what you want to read.
+                </h2>
+              </div>
+
+              <label className="flex w-fit items-center gap-2 rounded-full border border-slate-200 bg-white p-2 shadow-sm">
+                <Filter size={17} className="ml-2 text-[#071A63]" />
+                <span className="sr-only">Filter by category</span>
+                <select
+                  value={category}
+                  onChange={(event) => setCategory(event.target.value)}
+                  className="bg-transparent px-3 py-2 font-semibold text-[#071A63] outline-none"
+                >
+                  {categories.map((option) => (
+                    <option key={option}>{option}</option>
+                  ))}
+                </select>
+              </label>
+            </div>
+
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {filtered.map((article) => {
+                const Icon = categoryIcons[article.category];
+                return (
+                  <a
+                    key={article.id}
+                    href={`/intelligence/${article.slug}`}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      openArticle(article);
+                    }}
+                    className="group min-h-[330px] rounded-[30px] border border-slate-200 bg-white p-6 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+                  >
+                    <div
+                      className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${accentStyles[article.accent]} text-white`}
+                    >
+                      <Icon />
+                    </div>
+                    <p className="mt-7 text-xs font-bold uppercase tracking-[0.26em] text-[#FFCA00]">
+                      {article.category}
+                    </p>
+                    <h3 className="mt-4 text-2xl font-bold text-[#071A63]">
+                      {article.title}
+                    </h3>
+                    <p className="mt-4 text-sm leading-7 text-slate-600">
+                      {article.summary}
+                    </p>
+                    <span className="mt-7 inline-flex items-center gap-2 text-sm text-slate-500">
+                      <Clock size={15} /> {article.readTime}
+                    </span>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {active && (
+          <section
+            role="dialog"
+            aria-modal="true"
+            aria-label={active.title}
+            data-article-scroll
+            className="fixed inset-0 z-[80] overflow-y-auto bg-[#071A63]/45 p-3 backdrop-blur-md md:p-6"
+          >
+            <button
+              type="button"
+              onClick={closeArticle}
+              aria-label="Close article"
+              className="fixed right-5 top-5 z-[90] flex h-11 w-11 items-center justify-center rounded-full bg-white text-[#071A63] shadow-xl transition hover:scale-105 md:right-8 md:top-8"
+            >
+              <X />
+            </button>
+            <div className="mx-auto my-4 max-w-5xl md:my-8">
+              <ArticleReader article={active} />
+            </div>
+          </section>
+        )}
+
+        <CTA />
+      </main>
+    </>
+  );
+}
 
 export default function IntelligencePage() {
   return (

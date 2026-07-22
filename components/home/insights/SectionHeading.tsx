@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 export default function SectionHeading() {
   return (
@@ -23,14 +24,14 @@ export default function SectionHeading() {
 
       </div>
 
-      <a
+      <Link
         href="/intelligence"
         className="hidden items-center gap-3 rounded-full border border-slate-200 bg-white px-6 py-3 font-semibold text-[#071A63] shadow-sm transition hover:shadow-lg lg:flex"
       >
         View all articles
 
         <ArrowUpRight size={18} />
-      </a>
+      </Link>
 
     </div>
   );
